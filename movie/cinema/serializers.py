@@ -4,8 +4,8 @@ from .models import Movie
 
 class MovieSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
-    title = serializers.CharField(required=True)
-    description = serializers.CharField(required=False, max_length=255)
+    title = serializers.CharField(required=True, max_length=100)
+    description = serializers.CharField(required=False)
     duration = serializers.IntegerField(required=True)
 
     class Meta:
@@ -21,4 +21,3 @@ class MovieSerializer(serializers.ModelSerializer):
         instance.duration = validated_data.get("duration", instance.duration)
         instance.save()
         return instance
-
