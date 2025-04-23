@@ -6,7 +6,7 @@ class MovieSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     title = serializers.CharField(required=True, max_length=100)
     description = serializers.CharField(required=False)
-    duration = serializers.IntegerField(required=True)
+    duration = serializers.IntegerField(required=True, min_value=0)
 
     class Meta:
         model = Movie
